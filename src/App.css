@@ -1,38 +1,1121 @@
-.App {
-  text-align: center;
+.btn {
+  letter-spacing: 0.1px;
+  font-weight: 400;
+  border-radius: 2px;
+  border: 0;
+  min-width: 74px;
+  padding: 2.45rem 2em;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn-red {
+  background-color: var(--bg-red);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-red:hover {
+  background-color: var(--bg-red-hover);
 }
 
-@keyframes App-logo-spin {
+.main-story {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/*** Header ***/
+.header-wrapper {
+  width: 100%;
+  transition: background-color 0.5s ease;
+  padding: 0 5%;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.header {
+  position: relative;
+  height: auto;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  display: grid;
+  grid-template-columns: auto 10rem 6.3rem;
+  column-gap: 0.8rem;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-pack: start;
+  -webkit-box-align: start;
+}
+
+/* Logo */
+.logo-container {
+  height: 2.5rem;
+  background: transparent url('/src/netflix.svg') no-repeat;
+}
+
+.logo {
+  height: 2.5rem;
+  padding-top: 0;
+  width: auto;
+}
+
+/* Language */
+.lang-selection-container {
+  min-width: 10rem;
+}
+
+.lang-selection {
+  background-color: transparent;
+  width: 100%;
+}
+
+.lang-arrow {
+  position: relative;
+  width: 95%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+}
+
+.lang-arrow::before,
+::after {
+  position: absolute;
+  transform: translateY(-50%);
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+.lang-arrow::before {
+  /* content: url('https://unpkg.com/ionicons@5.5.2/dist/svg/globe-outline.svg'); */
+  content: url('globe.svg');
+  top: 50%;
+  left: 7%;
+  color: white;
+  background-color: white;
+  border-radius: 50px;
+}
+
+.lang-arrow::after {
+  content: url('caret-down.svg');
+  top: 50%;
+  right: 8%;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.lang-select {
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  width: 100%;
+  height: auto;
+  border: 1px solid #aaa;
+  font-size: 1.4rem;
+  color: white;
+  padding: 0.25rem 2.2rem;
+  border-radius: 2px;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.lang-select > option {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Sign in */
+.auth-link-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.auth-link {
+  border: none;
+  border-radius: 3px;
+  font-size: 1.3rem;
+  height: 95%;
+  width: 100%;
+  margin-right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* XS Screen Devices (iPhone 5/SE) */
+@media only screen and (max-width: 349px) {
+  .header-wrapper {
+    max-width: 349px;
+  }
+
+  .header {
+    grid-template-columns: auto 10rem 6rem;
+    padding-bottom: 0;
+    padding-top: 0.8rem;
+  }
+
+  .lang-arrow::before {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+
+  .auth-link-container {
+    min-width: 6rem;
+  }
+}
+
+/* M Screen Devices (iPhone 6/7/8 Plus) */
+@media only screen and (min-width: 400px) and (max-width: 549px) {
+  .header-wrapper {
+    max-width: 549px;
+  }
+
+  .header {
+    grid-template-columns: auto 11rem 6.3rem;
+    padding-top: 0.9rem;
+  }
+
+  .auth-link {
+    font-size: 1.4rem;
+  }
+}
+
+/* L Screen Devices (iPad) */
+@media only screen and (min-width: 550px) and (max-width: 949px) {
+  .header-wrapper {
+    height: 6.6rem;
+    max-width: 949px;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .header {
+    padding-top: 0.8rem;
+    grid-template-columns: auto 10rem 8.3rem;
+    column-gap: 1.8rem;
+  }
+
+  .logo-container {
+    height: 3rem;
+  }
+
+  .lang-select {
+    padding: 0.6rem 2.2rem;
+  }
+
+  .auth-link {
+    font-size: 1.6rem;
+    padding: 0.5rem 0;
+  }
+}
+
+/* XL Screen Devices (iPad Pro, Acer Swift 5) */
+@media only screen and (min-width: 950px) {
+  .header-wrapper {
+    height: 9rem;
+    max-width: 1920px;
+    padding-top: 2rem;
+    padding-bottom: 6%;
+  }
+
+  .header {
+    grid-template-columns: auto 12% 8.5%;
+  }
+
+  .logo-container {
+    height: 4rem;
+  }
+
+  /* .logo {
+    height: 3.8rem;
+  } */
+
+  .lang-selection-container {
+    min-width: 13rem;
+  }
+
+  .lang-arrow {
+    width: 80%;
+  }
+
+  .lang-arrow::before {
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 50%;
+    left: 9%;
+  }
+
+  .lang-arrow::after {
+    height: 1.8rem;
+    width: 1.8rem;
+    top: 50%;
+    right: 8%;
+  }
+
+  .lang-select {
+    font-size: 1.5rem;
+    padding: 0.8rem 0.5rem;
+    padding-left: 2.8rem;
+  }
+
+  .auth-link-container {
+    min-width: 9rem;
+  }
+
+  .auth-link {
+    font-size: 1.8rem;
+    padding: 0.65rem 0;
+  }
+}
+
+/*** ============================================ ***/
+
+/*** Story Cards ***/
+.story-cards {
+  margin: 0 auto;
+}
+
+.story-card {
+  position: relative;
+  padding: 5rem 5%;
+  padding-bottom: 6rem;
+  margin: 0 auto;
+  z-index: 1;
+  border-bottom: 0.8rem solid var(--section-line-break);
+}
+
+/* Story Card Text */
+.story-card-text {
+  position: relative;
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  text-align: center;
+  z-index: 3;
+}
+
+.story-card-title {
+  font-size: 2.8rem;
+  /* font-size: 2.6rem; */
+  line-height: 1.1;
+  font-weight: 600;
+  margin: 0 auto;
+  max-width: 64rem;
+}
+
+/* .hero-card .story-card-title {
+  font-size: 2.8rem;
+} */
+
+.story-card-subtitle {
+  font-size: 1.8rem;
+  margin: 1rem auto;
+  font-weight: 400;
+  max-width: 64rem;
+}
+
+.story-card-disclaimer {
+  font-size: 1.9rem;
+  font-weight: 400;
+  margin: 0.75em 0 0.25em;
+}
+
+/* XS Screen Devices (iPhone 5/SE) */
+@media only screen and (max-width: 349px) {
+  .story-card {
+    padding: 4rem 5%;
+  }
+}
+
+/* M Screen Devices (iPhone 6/7/8 Plus) */
+@media only screen and (min-width: 400px) and (max-width: 549px) {
+  .story-card-text {
+    padding: 3rem 0;
+  }
+
+  .story-card-title {
+    max-width: 64rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* L Screen Devices (iPad) */
+@media only screen and (min-width: 550px) and (max-width: 949px) {
+  .story-card {
+    padding: 7rem 4.5rem;
+  }
+
+  .story-card-text {
+    margin: 0 auto;
+    padding: 7.5rem 0;
+    text-align: center;
+    max-width: 95rem;
+    font-size: 2rem;
+  }
+
+  .story-card-title {
+    font-size: 5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    max-width: 64rem;
+  }
+
+  .story-card-subtitle {
+    font-size: 2.6rem;
+  }
+}
+
+/* XL Screen Devices (iPad Pro, Acer Swift 5) */
+@media only screen and (min-width: 950px) {
+  .story-card {
+    padding: 7rem 4.5rem;
+  }
+
+  .story-card-text {
+    padding: 7.5rem 0;
+    font-size: 2.6rem;
+    font-weight: 400;
+    max-width: 95rem;
+  }
+
+  .story-card-title {
+    font-size: 5rem;
+    max-width: 64rem;
+    letter-spacing: 1.1px;
+  }
+
+  .story-card-subtitle {
+    font-size: 2.6rem;
+    margin: 1.6rem auto;
+  }
+}
+
+/* =================================== */
+
+/** Hero Card **/
+
+/* XL Screen Devices (iPad Pro, Acer Swift 5) */
+/* @media only screen and (min-width: 950px) {
+  .hero-story-text {
+    padding: 0;
+  }
+} */
+
+/* Background Image */
+.story-card-background {
+  position: absolute;
+  top: -7rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  /* background: url('/src/netflix-cover.jpg') center/100% no-repeat; */
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.background-img-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 49rem;
+}
+
+.background-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.img-gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+/* L Screen Devices (iPad) */
+@media only screen and (min-width: 550px) and (max-width: 949px) {
+  .story-card-background {
+    top: -7rem;
+  }
+
+  .background-img-wrapper {
+    height: 73.25rem;
+  }
+}
+
+/* XL Screen Devices (iPad Pro, Acer Swift 5) */
+@media only screen and (min-width: 950px) {
+  .story-card-background {
+    top: -10rem;
+  }
+
+  .background-img-wrapper {
+    height: 70.7482rem;
+  }
+
+  .img-gradient {
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+}
+
+.email-form {
+  position: relative;
+  z-index: -6;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.email-form-title {
+  padding: 0 7%;
+  max-width: 450px;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.email-form-area {
+  z-index: -5;
+  text-align: center;
+  padding-top: 1rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.email-input-wrapper {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.email-input-section {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #8c8c8c;
+  border-radius: 2px;
+}
+
+.email-input {
+  width: 100%;
+  height: 48px;
+  padding: 1rem 1rem 0;
+  font-size: 1.6rem;
+  display: block;
+  color: black;
+  background-color: transparent;
+}
+
+.email-input-error {
+  border: 0;
+  border-bottom: 2px solid #ffa00a;
+}
+
+.input-error {
+  text-align: left;
+  padding: 6px 3px;
+  font-size: 1.5rem;
+  color: #ffa00a;
+}
+
+.email-label {
+  position: absolute;
+  color: #8c8c8c;
+  font-size: 1.4rem;
+  z-index: -1;
+}
+
+.label-center {
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-tr-webkit-transform: translateY(-50%);
+}
+
+.label-top {
+  font-size: 1.1rem;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-120%);
+  -webkit-transform: translateY(-120%);
+  -moz-tr-webkit-transform: translateY(-120%);
+}
+
+.label-down-animate {
+  animation: label-move-down 0.2s ease;
+  -webkit-animation: label-move-down 0.2s ease;
+  -moz-animation: label-move-down 0.2s ease;
+}
+
+.label-up-animate {
+  animation: label-move-up 0.2s ease;
+  -webkit-animation: label-move-up 0.2s ease;
+  -moz-animation: label-move-up 0.2s ease;
+}
+
+@keyframes label-move-down {
   from {
-    transform: rotate(0deg);
+    font-size: 1.1rem;
+    transform: translateY(-120%);
   }
   to {
-    transform: rotate(360deg);
+    font-size: 1.4rem;
+    transform: translateY(-50%);
+  }
+}
+
+@--webkit-keyframes label-move-down {
+  from {
+    font-size: 1.1rem;
+    transform: translateY(-120%);
+  }
+  to {
+    font-size: 1.4rem;
+    transform: translateY(-50%);
+  }
+}
+
+@--moz-keyframes label-move-down {
+  from {
+    font-size: 1.1rem;
+    transform: translateY(-120%);
+  }
+  to {
+    font-size: 1.4rem;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes label-move-up {
+  from {
+    font-size: 1.4rem;
+    transform: translateY(-50%);
+  }
+  to {
+    font-size: 1.1rem;
+    transform: translateY(-120%);
+  }
+}
+
+@-webkit-keyframes label-move-up {
+  from {
+    font-size: 1.4rem;
+    transform: translateY(-50%);
+  }
+  to {
+    font-size: 1.1rem;
+    transform: translateY(-100%);
+  }
+}
+
+@-moz-keyframes label-move-up {
+  from {
+    font-size: 1.4rem;
+    transform: translateY(-50%);
+  }
+  to {
+    font-size: 1.1rem;
+    transform: translateY(-100%);
+  }
+}
+
+.email-btn-wrapper {
+  font-size: 2rem;
+}
+
+.email-submit-btn {
+  font-size: 1.6rem;
+  min-height: 40px;
+  padding: 0 1em;
+  margin-top: 1.6rem;
+  margin-bottom: 0.5rem;
+  width: auto;
+}
+
+.btn-right-arrow {
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
+/* XS Screen Devices (iPhone 5/SE) */
+@media only screen and (max-width: 349px) {
+  .email-form-title {
+    line-height: 1.2;
+  }
+  .email-form-area {
+    padding-top: 1.2rem;
+  }
+}
+
+/* L Screen Devices (iPad) */
+@media only screen and (min-width: 550px) and (max-width: 949px) {
+  .email-form-title {
+    padding: 0;
+    max-width: 450px;
+    font-size: 2.3rem;
+  }
+
+  .email-input-wrapper {
+    max-width: 50rem;
+  }
+
+  .email-input {
+    height: 4.8rem;
+  }
+
+  .email-label {
+    font-size: 1.6rem;
+  }
+
+  .label-top {
+    font-size: 1.2rem;
+  }
+
+  @keyframes label-move-down {
+    from {
+      font-size: 1.2rem;
+      transform: translateY(-120%);
+    }
+    to {
+      font-size: 1.6rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  @--webkit-keyframes label-move-down {
+    from {
+      font-size: 1.2rem;
+      transform: translateY(-120%);
+    }
+    to {
+      font-size: 1.6rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  @--moz-keyframes label-move-down {
+    from {
+      font-size: 1.2rem;
+      transform: translateY(-120%);
+    }
+    to {
+      font-size: 1.6rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes label-move-up {
+    from {
+      font-size: 1.6rem;
+      transform: translateY(-50%);
+    }
+    to {
+      font-size: 1.2rem;
+      transform: translateY(-120%);
+    }
+  }
+
+  @-webkit-keyframes label-move-up {
+    from {
+      font-size: 1.6rem;
+      transform: translateY(-50%);
+    }
+    to {
+      font-size: 1.2rem;
+      transform: translateY(-100%);
+    }
+  }
+
+  @-moz-keyframes label-move-up {
+    from {
+      font-size: 1.6rem;
+      transform: translateY(-50%);
+    }
+    to {
+      font-size: 1.2rem;
+      transform: translateY(-100%);
+    }
+  }
+}
+
+/* XL Screen Devices (iPad Pro, Acer Swift 5) */
+@media only screen and (min-width: 950px) {
+  .email-form {
+    max-width: 95rem;
+    padding-top: 1.3rem;
+  }
+
+  .email-form-title {
+    font-size: 2.15rem;
+    max-width: none;
+    padding-bottom: 2rem;
+  }
+
+  .email-form-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 45rem;
+    padding-top: 0;
+    padding-bottom: 1rem;
+  }
+
+  .email-input-wrapper {
+    margin: 0;
+    width: 53%;
+    margin-right: 0.5px;
+  }
+
+  .email-input-section {
+    border-radius: 2px 0 0 2px;
+  }
+
+  .email-input {
+    width: 100%;
+    min-width: 47rem;
+    min-height: 65px;
+  }
+
+  .email-btn-wrapper {
+    margin: 0;
+    padding: 0;
+    min-width: 23.8rem;
+  }
+
+  .email-submit-btn {
+    width: 100%;
+    font-size: 2.8rem;
+    min-height: 67px;
+    margin: 0;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .email-label {
+    font-size: 1.8rem;
+  }
+
+  .label-top {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  @keyframes label-move-down {
+    from {
+      font-size: 1.3rem;
+      transform: translateY(-120%);
+    }
+    to {
+      font-size: 1.8rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  @--webkit-keyframes label-move-down {
+    from {
+      font-size: 1.3rem;
+      transform: translateY(-120%);
+    }
+    to {
+      font-size: 1.8rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  @--moz-keyframes label-move-down {
+    from {
+      font-size: 1.3rem;
+      transform: translateY(-120%);
+    }
+    to {
+      font-size: 1.8rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes label-move-up {
+    from {
+      font-size: 1.8rem;
+      transform: translateY(-50%);
+    }
+    to {
+      font-size: 1.3rem;
+      transform: translateY(-120%);
+    }
+  }
+
+  @-webkit-keyframes label-move-up {
+    from {
+      font-size: 1.8rem;
+      transform: translateY(-50%);
+    }
+    to {
+      font-size: 1.3rem;
+      transform: translateY(-100%);
+    }
+  }
+
+  @-moz-keyframes label-move-up {
+    from {
+      font-size: 1.8rem;
+      transform: translateY(-50%);
+    }
+    to {
+      font-size: 1.3rem;
+      transform: translateY(-100%);
+    }
+  }
+}
+
+/* =================================== */
+
+/** Animation Card **/
+.animation-card {
+  padding-bottom: 5rem;
+}
+
+.animation-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  margin: 0 auto;
+}
+
+.story-card-text-animation {
+  padding: 0;
+}
+
+.story-card-img-container {
+  width: 100%;
+  height: 100%;
+  max-width: 60rem;
+  margin-top: 1em;
+}
+
+.story-card-animation-container {
+  position: relative;
+  overflow: hidden;
+  margin: -10% 0 0 0;
+  /* min-height: 10rem; */
+  /* width: 100%; */
+}
+
+.animation-card.downloadAndWatch .story-card-animation-container {
+  min-height: 10rem;
+}
+
+.story-card-img {
+  position: relative;
+  z-index: 2;
+}
+
+.story-card-animation {
+  width: 100%;
+  max-width: 73%;
+  max-height: 54%;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.animation-card.downloadAndWatch .story-card-animation {
+  left: 50%;
+  bottom: 0%;
+  transform: translate(-50%, 75%);
+  width: 60%;
+  min-width: 26rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  background: #000;
+  padding: 0.4rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.75em;
+  box-shadow: 0 0 2rem 0 #000;
+  z-index: 3;
+  height: 26%;
+  /* height: 20%; */
+}
+
+.animation-card.downloadAndWatch
+  .story-card-animation
+  .story-card-animation-image {
+  margin: 0 1em 0 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.animation-card.downloadAndWatch
+  .story-card-animation
+  .story-card-animation-image
+  img {
+  height: 3em;
+}
+
+.animation-card.downloadAndWatch
+  .story-card-animation
+  .story-card-animation-text {
+  flex-grow: 1;
+  flex-shrink: 1;
+  -webkit-box-flex: 1;
+  margin: 0.3em 0;
+}
+
+.animation-card.downloadAndWatch
+  .story-card-animation
+  .story-card-animation-text
+  .text-0 {
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.animation-card.downloadAndWatch
+  .story-card-animation
+  .story-card-animation-text
+  .text-1 {
+  color: #0071eb;
+  font-weight: 400;
+  font-size: 0.75em;
+}
+
+.animation-card.downloadAndWatch .story-card-animation::after {
+  width: 3em;
+  height: 3em;
+  outline: 2px solid #000;
+  outline-offset: -2px;
+  display: block;
+  background: url('https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif')
+    center center no-repeat;
+  background-size: 100%;
+  content: '';
+  flex-grow: 0;
+  flex-shrink: 0;
+  -webkit-box-flex: 0;
+  position: relative;
+  transform: translateY(0%);
+}
+
+/* Watch On TV */
+.story-card-video {
+  width: 100%;
+  height: 100%;
+}
+
+/* .animation-card.watchOnTv .story-card-animation-container {
+  margin: -10% 0 0 0;
+}
+
+.animation-card.downloadAndWatch .story-card-animation-container {
+  margin: -8% 0 0 0;
+} */
+
+/* M Screen Devices (iPhone 6/7/8 Plus) */
+@media only screen and (min-width: 400px) and (max-width: 549px) {
+  .story-card-video {
+    transform: translateY(-22%);
+  }
+}
+
+/* L Screen Devices (iPad) */
+@media only screen and (min-width: 550px) and (max-width: 949px) {
+  .story-card-text-animation .story-card-title {
+    font-size: 4rem;
+  }
+
+  .story-card-text-animation .story-card-subtitle {
+    font-size: 2rem;
+  }
+
+  .animation-card.downloadAndWatch .story-card-animation {
+    width: 65%;
+    height: 20%;
+    transform: translate(-50%, 135%);
+  }
+}
+
+/* XL Screen Devices (iPad Pro, Acer Swift 5) */
+@media only screen and (min-width: 950px) {
+  .animation-card {
+    padding: 7rem 4.5rem;
+  }
+
+  .animation-card .story-card-text {
+    padding: 0 4.8rem 0 0;
+  }
+
+  .animation-card.flipped .story-card-text {
+    padding: 0 0 0 4.8rem;
+  }
+
+  .animation-card-container {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 110rem;
+  }
+
+  .downloadAndWatch .animation-card-container {
+    flex-direction: row-reverse;
+  }
+
+  .story-card-text-animation {
+    padding-right: 4.8;
+    width: 52%;
+    margin: -5% 0;
+  }
+
+  .story-card-text-animation .story-card-title {
+    text-align: start;
+  }
+
+  .story-card-text-animation .story-card-subtitle {
+    text-align: start;
+  }
+
+  .story-card-img-container {
+    width: 48%;
+    height: 100%;
+    margin-top: 0;
+  }
+
+  .animation-card.watchOnTv .story-card-animation-container {
+    margin: -10% -5% -5% 0;
+  }
+
+  .animation-card.downloadAndWatch .story-card-animation-container {
+    margin: -8% 0 -4% -15%;
+    min-height: 10rem;
+    width: 100%;
+  }
+
+  .animation-card.downloadAndWatch .story-card-animation {
+    width: 65%;
   }
 }
