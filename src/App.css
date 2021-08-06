@@ -1212,11 +1212,17 @@
 
 /* L Screen Devices (iPad) */
 @media only screen and (min-width: 550px) and (max-width: 949px) {
+  .animation-card,
+  .faq-card {
+    padding: 7rem 4.5rem;
+  }
+
   .animation-card .story-card-text {
     padding: 0;
   }
 
-  .animation-card .story-card-title {
+  .animation-card .story-card-title,
+  .faq-card .story-card-title {
     font-size: 4rem;
   }
 
@@ -1230,8 +1236,13 @@
     transform: translate(-50%, 135%);
   }
 
+  .faq-card .faq-list {
+    width: 90%;
+    margin: 1.6em auto;
+  }
+
   .footer-link-item {
-    width: 25%;
+    width: 33%;
   }
 
   .footer-card .lang-selection {

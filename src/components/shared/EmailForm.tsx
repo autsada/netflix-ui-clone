@@ -106,7 +106,7 @@ const EmailForm: React.FC<Props> = ({ id, formId, setFormId, email, setEmail }) 
         {!isValid && errors.email && <div className="input-error">{errors.email.message}</div>}
       </div>
       <div className="email-btn-wrapper">
-        <button className="btn btn-red email-submit-btn" disabled={!email || formId !== id} style={{ cursor: !email || formId !== id ? 'not-allowed' : undefined }}>
+        <button className="btn btn-red email-submit-btn" disabled={formId !== id} style={{ cursor: formId !== id ? 'not-allowed' : undefined }}>
           <span>Get Started</span>
           <span className='btn-right-arrow'>&#10095;</span>
         </button>
