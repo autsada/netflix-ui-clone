@@ -788,7 +788,7 @@
   .email-btn-wrapper {
     margin: 0;
     padding: 0;
-    max-width: 20.8rem;
+    min-width: 21rem;
   }
 
   .email-submit-btn {
