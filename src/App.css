@@ -1188,7 +1188,6 @@
 }
 
 .footer-card .lang-select {
-  color: var(--footer-font-color);
   height: 5rem;
   border: 1px solid #333;
   color: #999;
@@ -1322,7 +1321,7 @@
   }
 
   .footer-card .lang-selection {
-    width: 16%;
-    min-width: 14rem;
+    width: 18%;
+    min-width: 15rem;
   }
 }
