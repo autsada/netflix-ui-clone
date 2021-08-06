@@ -1,35 +1,16 @@
-import React from 'react'
-import { useForm, Controller } from "react-hook-form"
+import React, { Dispatch, SetStateAction } from 'react'
 
 import StoryCardText from '../shared/StoryCardText'
+import EmailForm from '../shared/EmailForm'
 
 interface Props {
-
+  formId: string
+  setFormId: Dispatch<SetStateAction<string>>
+  email: string
+  setEmail: Dispatch<SetStateAction<string>>
 }
 
-const HeroCard: React.FC<Props> = () => {
-  const { handleSubmit, formState: { errors }, control, reset } = useForm<{ email: string }>()
-
-  const onSubmit = handleSubmit(data => console.log(data))
-
-  function moveEmailLabelUp() {
-    const labelEl = document.getElementById('email-label')
-
-    if (labelEl) {
-      labelEl.classList.remove('label-center', 'label-down-animate')
-      labelEl.classList.add('label-top', 'label-up-animate')
-    }
-  }
-
-  function moveEmailLabelBack() {
-    const labelEl = document.getElementById('email-label')
-
-    if (labelEl) {
-      labelEl.classList.remove('label-top', 'label-up-animate')
-      labelEl.classList.add('label-center', 'label-down-animate')
-    }
-  }
-
+const HeroCard: React.FC<Props> = ({ email, setEmail, formId, setFormId }) => {
   return <div className='story-card hero-card'>
     <div className="story-card-background">
       <div className="background-img-wrapper">
@@ -40,56 +21,7 @@ const HeroCard: React.FC<Props> = () => {
 
     <StoryCardText title='Unlimited movies, TV shows, and more.' subtitle='Watch anywhere. Cancel anytime.'>
 
-      <form action="" className="email-form" onSubmit={onSubmit}>
-        <h3 className="email-form-title">
-          Ready to watch? Enter your email to create or restart your membership.
-        </h3>
-        <div className="email-form-area">
-          <div className="email-input-wrapper">
-            <label htmlFor="" className="email-input-section">
-              <Controller
-                control={control} name='email'
-                rules={{
-                  required: 'Email is required',
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Please enter a valid email address',
-                  }
-                }}
-                render={({
-                  field: { value, onBlur, onChange },
-                  fieldState: { invalid }
-                }) => <input
-                    type="email"
-                    formNoValidate={true}
-                    className="email-input"
-                    autoComplete='email'
-                    onFocus={moveEmailLabelUp}
-                    onBlur={() => {
-                      console.log(value)
-                      if (!value) moveEmailLabelBack()
-                      if (!value && invalid) reset()
-                      onBlur()
-                    }}
-                    onChange={onChange}
-                  />}
-              />
-              <label
-                htmlFor="emailLabel" id='email-label' className='email-label label-center'
-              >
-                Email address
-              </label>
-            </label>
-            {errors.email && <div className="input-error">{errors.email.message}</div>}
-          </div>
-          <div className="email-btn-wrapper">
-            <button className="btn btn-red email-submit-btn">
-              <span>Get Started</span>
-              <span className='btn-right-arrow'>&#10095;</span>
-            </button>
-          </div>
-        </div>
-      </form>
+      <EmailForm id='hero-card' email={email} setEmail={setEmail} formId={formId} setFormId={setFormId} />
     </StoryCardText>
 
     <div className="center-pixel"></div>

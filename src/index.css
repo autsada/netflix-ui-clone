@@ -44,6 +44,7 @@ h2,
 h3,
 h4,
 p,
+ul,
 li,
 a {
   margin: 0;
@@ -53,6 +54,10 @@ a {
 h1 {
   font-size: 5rem;
   /* letter-spacing: 1px; */
+}
+
+li {
+  list-style: none;
 }
 
 a,

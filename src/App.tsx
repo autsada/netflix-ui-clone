@@ -11,7 +11,7 @@ function App() {
       <Header />
       <StoryCards />
 
-      <a href="https://icons8.com/icon/20519/netflix">Netflix icon by Icons8</a>
+      {/* <a href="https://icons8.com/icon/20519/netflix">Netflix icon by Icons8</a> */}
     </div>
   );
 }
