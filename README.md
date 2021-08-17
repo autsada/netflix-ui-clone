@@ -2,7 +2,7 @@
 
 ## Demo
 
-_---to be a added---_
+https://my-netflix-app.netlify.app
 
 ## Technologies Stack
 
